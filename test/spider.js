@@ -1,3 +1,6 @@
+var fs = require('fs')
+var assert = require('assert')
+var util = require('util')
 /*
 describe('mikeal Spider', function () {
   it("力試し", function(done){
@@ -21,15 +24,16 @@ describe('Spider', function () {
   var Spider = rewire('../lib/spider.js')
   // rewire mock
   var getPageLinks = Spider.__get__('getPageLinks');
-
+  it('start', function(done){
+    
+  })
   it('parse url attr can true parsing', function (done) {
     // TODO: separate to single test
     var startUrl = "http://google.com"
-    startUrl = "http://www.itmedia.co.jp/"
     var spider = new Spider(startUrl,{})
     spider.get(startUrl, function(e, r, body){
       var links = getPageLinks(r, body)
-      //console.log(links);
+      assert.ok(util.isArray(links))
       done()
     })
   });
