@@ -21,16 +21,18 @@ describe('mikeal Spider', function () {
 
 describe('Spider', function () {
   var rewire = require('rewire')
-  var Spider = rewire('../lib/spider.js')
+  var crawler = rewire('../lib/spider.js')
+  var Spider = crawler.Spider
   // rewire mock
-  var getPageLinks = Spider.__get__('getPageLinks');
-  it('start', function(done){
-    
-  })
+  var getPageLinks = crawler.__get__('getPageLinks');
+  
   it('parse url attr can true parsing', function (done) {
     // TODO: separate to single test
     var startUrl = "http://google.com"
-    var spider = new Spider(startUrl,{})
+    var option = {
+      uri: startUrl
+    }
+    var spider = new Spider(option)
     spider.get(startUrl, function(e, r, body){
       var links = getPageLinks(r, body)
       assert.ok(util.isArray(links))
