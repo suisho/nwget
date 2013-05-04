@@ -17,7 +17,7 @@ var SHORT_HAND = {
   "nc" : ["--no-clobber"],
   "l"  : ["--level"],
   "D"  : ["--domains"],
-  "H"  : ["--spanHost"],
+  "H"  : ["--span-host"],
   "P"  : ["--directory-prefix"]
 }
 
