@@ -3,13 +3,13 @@ var spider  = require("../lib/spider")
 var async   = require("async")
 
 var KNOWN_OPT = {
-  uri               : ["url"],
-  recursive         : [Boolean],
-  level             : [Number],
-  clobber           : [Boolean],
-  domains           : [String, Array],
-  "exclude-domains" : [String, Array],
-  "span-host"       : [Boolean],
+  "recursive"        : [Boolean],
+  "level"            : [Number],
+  "clobber"          : [Boolean],
+  "domains"          : [String, Array],
+  "exclude-domains"  : [String, Array],
+  "span-host"        : [Boolean],
+  "directory-prefix" : [String]
 }
 
 var SHORT_HAND = {
@@ -17,7 +17,8 @@ var SHORT_HAND = {
   "nc" : ["--no-clobber"],
   "l"  : ["--level"],
   "D"  : ["--domains"],
-  "H"         : ["--spanHost"],
+  "H"  : ["--spanHost"],
+  "P"  : ["--directory-prefix"]
 }
 
 var showHelp = function(){
