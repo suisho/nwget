@@ -40,6 +40,7 @@ describe('flatten', function () {
 
 describe('async hierarchy', function () {
   var hierarchy = require('../lib/async_hierarchy.js')
+
   it('prime number', function(done){
     var actual = []
     hierarchy([100], function(item, callback){
@@ -60,4 +61,19 @@ describe('async hierarchy', function () {
       done()
     })
   })
+  
+  it('set max level', function(done){
+    var result =[]
+    hierarchy([10], function(item, callback){
+      result.push(item)
+      callback(null, [item + 1])
+    },
+    5, // level
+    function(err, level, _result){
+     // console.log(result, level);
+      assert.deepEqual(result, [10,11,12,13,14])
+      done()
+    })
+  })
 })
+
