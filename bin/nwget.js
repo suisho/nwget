@@ -3,13 +3,21 @@ var spider  = require("../lib/spider")
 var async   = require("async")
 
 var KNOWN_OPT = {
+  // Download
+  "spider"           : [Boolean],
+  "clobber"          : [Boolean],
+  
+  // Directories
+  "directory-prefix" : [String],
+  
+  // Recursive download
   "recursive"        : [Boolean],
   "level"            : [Number],
-  "clobber"          : [Boolean],
+  
+  // Recursive accept/reject
   "domains"          : [String, Array],
   "exclude-domains"  : [String, Array],
   "span-host"        : [Boolean],
-  "directory-prefix" : [String]
 }
 
 var SHORT_HAND = {
