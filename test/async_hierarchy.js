@@ -26,5 +26,38 @@ describe('flatten', function () {
       {a : "d"},
     ])
   });
+  
+  it('should get emplty array', function () {
+    var foo = [
+      [],
+      [],
+    ]
+    var actual = flatten(foo)
+    assert.deepEqual(actual, [])
+  });
 
 });
+
+describe('async hierarchy', function () {
+  var hierarchy = require('../lib/async_hierarchy.js')
+  it('prime number', function(done){
+    var actual = []
+    hierarchy([100], function(item, callback){
+      var next = []
+      for(var i = item - 1 ; i > 1; i--){
+        if(item % i == 0){
+          next.push(item / i)
+          next.push(i)
+          break
+        }
+      }
+      if(next.length == 0){
+        actual.push(item)
+      }
+      callback(null, next)
+    }, function(err, level, result){
+      assert.deepEqual(actual, [2, 2, 5, 5])
+      done()
+    })
+  })
+})
